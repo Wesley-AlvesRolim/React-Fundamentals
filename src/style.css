@@ -6,11 +6,11 @@
 }
 
 :root {
-  --b1: #07617d;
-  --b2: #f9a828;
-  --b3: #ec610a;
+  --b1: #064663;
+  --b2: #041c32;
+  --b3: #da0037;
   --b4: #21111141;
-  --b5: #757575;
+  --b5: #04293a;
   --b6: #bdbdbd;
 }
 
@@ -29,6 +29,8 @@
   width: calc(50vw + 10rem);
   max-width: 600px;
   padding: 0.5rem;
+  border: 2px solid var(--b5);
+  border-radius: 5px;
   background: var(--b2);
 }
 

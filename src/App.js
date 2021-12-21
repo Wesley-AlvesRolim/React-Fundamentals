@@ -1,12 +1,14 @@
 import React from 'react';
 import './style.css';
-import Main from './components/main';
+import Form from './components/Form';
 
 export default function App() {
   return (
     <div className="container">
-      <h1>Lista de tarefas</h1>
-      <Main />
+      <label htmlFor="addTasks ">
+        <h1>Lista de tarefas</h1>
+      </label>
+      <Form />
     </div>
   );
 }
