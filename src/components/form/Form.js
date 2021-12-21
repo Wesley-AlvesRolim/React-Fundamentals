@@ -30,7 +30,7 @@ class Form extends Component {
         </form>
         <ul className="tasks">
           {tasks.map((task) => (
-            <Task task={task} />
+            <Task key={task} task={task} />
           ))}
         </ul>
       </>
