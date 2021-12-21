@@ -6,7 +6,7 @@
 }
 
 :root {
-  --b1: #064663;
+  --b1: #0c0c0c;
   --b2: #041c32;
   --b3: #da0037;
   --b4: #21111141;
@@ -34,7 +34,7 @@
   background: var(--b2);
 }
 
-.container > h1 {
+.container label > h1 {
   text-align: center;
   margin-bottom: 0.5rem;
 }

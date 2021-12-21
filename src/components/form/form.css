@@ -1,6 +1,9 @@
 form {
   height: 3rem;
+  width: 80%;
+  margin: 0 auto;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -25,7 +28,7 @@ button {
   margin-left: 0.5rem;
   background-color: var(--b3);
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-shadow: 1px 0 5px #000;
   box-shadow: 1px 0 5px var(--b5);
   display: flex;
@@ -38,4 +41,9 @@ button {
 button:hover {
   transform: scale(1.25) translateY(-5px);
   box-shadow: 1px 0 5px var(--b6);
+}
+
+ul {
+  width: 80%;
+  margin: 0.5rem auto 0;
 }
