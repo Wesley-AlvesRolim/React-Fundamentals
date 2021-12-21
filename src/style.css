@@ -2,4 +2,37 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --b1: #07617d;
+  --b2: #f9a828;
+  --b3: #ec610a;
+  --b4: #21111141;
+  --b5: #757575;
+  --b6: #bdbdbd;
+}
+
+#root {
+  color: #fff;
+  text-shadow: 1px 0 5px #000;
+  background-color: var(--b1);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  min-height: 10rem;
+  width: calc(50vw + 10rem);
+  max-width: 600px;
+  padding: 0.5rem;
+  background: var(--b2);
+}
+
+.container > h1 {
+  text-align: center;
+  margin-bottom: 0.5rem;
 }

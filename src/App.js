@@ -1,10 +1,12 @@
 import React from 'react';
 import './style.css';
+import Main from './components/main';
 
 export default function App() {
   return (
-    <div>
-      <h1>Hello World!</h1>
+    <div className="container">
+      <h1>Lista de tarefas</h1>
+      <Main />
     </div>
   );
 }
