@@ -10,6 +10,7 @@ function Form({ handleFormSubmit, handleInputChange, inputValue }) {
         type="text"
         placeholder="Adicione aqui uma tafera"
         id="addTasks"
+        autocomplete="off"
         value={inputValue}
       />
       <button type="submit">

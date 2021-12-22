@@ -2,18 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './tasks.css';
 
-function Tasks({ tasks, handleClickEdit, handleClickDelete }) {
+function Tasks({ tasks, handleClickDone, handleClickEdit, handleClickDelete }) {
   return (
     <ul className="tasks">
-      {tasks.map((task, index) => (
-        <div className="taskContainer" key={task}>
-          <li className="task">{task}</li>
+      {tasks.map(({ text, isDone }, index) => (
+        <div className="taskContainer" key={text}>
+          <li className={`task ${isDone ? 'finished' : 'pending'}`}>{text}</li>
           <div>
+            <i
+              class="fa fa-check"
+              aria-hidden="true"
+              onClick={() => {
+                handleClickDone(index);
+              }}
+            ></i>
             <i
               class="fa fa-pencil"
               aria-hidden="true"
               onClick={() => {
-                handleClickEdit(task, index);
+                handleClickEdit(text, index);
               }}
             ></i>
             <i
@@ -32,6 +39,7 @@ function Tasks({ tasks, handleClickEdit, handleClickDelete }) {
 
 Tasks.propTypes = {
   tasks: PropTypes.array.isRequired,
+  handleClickDone: PropTypes.func.isRequired,
   handleClickEdit: PropTypes.func.isRequired,
   handleClickDelete: PropTypes.func.isRequired,
 };

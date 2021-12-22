@@ -10,45 +10,56 @@ class Main extends Component {
     index: -1,
   };
 
+  setLocalStorage(value) {
+    localStorage.setItem('tasks', JSON.stringify(value));
+  }
   componentDidMount() {
     const { tasks } = this.state;
     if (!tasks) return;
-    this.setState({ tasks: JSON.parse(localStorage.getItem('tasks')) });
+    this.setState({ tasks: JSON.parse(localStorage.getItem('tasks')) || [] });
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { inputValue, tasks } = this.state;
     if (prevState.inputValue === inputValue) return;
 
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    this.setLocalStorage(tasks);
   }
 
   handleInputChange = (e) => {
     this.setState({ inputValue: e.target.value });
   };
 
-  handleClickEdit = (task, index) => {
-    this.setState({ inputValue: task, index });
+  handleClickDone = (index) => {
+    const { tasks } = this.state;
+    tasks[index].isDone = !tasks[index].isDone;
+    this.setState({ tasks });
+    this.setLocalStorage(tasks);
+  };
+
+  handleClickEdit = (text, index) => {
+    this.setState({ inputValue: text, index });
   };
 
   handleClickDelete = (index) => {
     const { tasks } = this.state;
     tasks.splice(index, 1);
     this.setState({ tasks });
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    this.setLocalStorage(tasks);
   };
 
   handleFormSubmit = (e) => {
     e.preventDefault();
     const { inputValue, index, tasks } = this.state;
 
-    if (tasks.includes(inputValue) || inputValue === '') return;
+    const checkIfHaveEqualsTexts = tasks.find((el) => el.text === inputValue);
+    if (checkIfHaveEqualsTexts || inputValue === '') return;
     if (index !== -1) {
-      tasks[index] = inputValue;
+      tasks[index].text = inputValue;
       this.setState({ tasks, inputValue: '', index: -1 });
       return;
     }
-    tasks.push(inputValue);
+    tasks.push({ text: inputValue, isDone: false });
     this.setState({ tasks, inputValue: '' });
   };
 
@@ -63,8 +74,9 @@ class Main extends Component {
         />
         <Tasks
           tasks={tasks}
+          handleClickDone={this.handleClickDone}
           handleClickEdit={this.handleClickEdit}
-          handleClickDelete={this.handleDelete}
+          handleClickDelete={this.handleClickDelete}
         />
       </>
     );
