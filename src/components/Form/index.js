@@ -1,10 +1,12 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import './form.css';
 
-function Form() {
+function Form({ handleFormSubmit, handleInputChange, inputValue }) {
   return (
-    <form action="#" onSubmit={this.handleFormSubmit}>
+    <form action="#" onSubmit={handleFormSubmit}>
       <input
-        onChange={this.handleInputChange}
+        onChange={handleInputChange}
         type="text"
         placeholder="Adicione aqui uma tafera"
         id="addTasks "
@@ -16,4 +18,10 @@ function Form() {
     </form>
   );
 }
+
+Form.propTypes = {
+  handleFormSubmit: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  inputValue: PropTypes.string.isRequired,
+};
 export default Form;

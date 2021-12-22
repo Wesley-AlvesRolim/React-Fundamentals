@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './form.css';
 
-class Form extends Component {
+import Form from './components/Form';
+import Tasks from './components/Tasks';
+
+class Main extends Component {
   state = {
     inputValue: '',
     tasks: [],
@@ -54,44 +56,19 @@ class Form extends Component {
     const { inputValue, tasks } = this.state;
     return (
       <>
-        <form action="#" onSubmit={this.handleFormSubmit}>
-          <input
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Adicione aqui uma tafera"
-            id="addTasks "
-            value={inputValue}
-          />
-          <button type="submit">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-          </button>
-        </form>
-        <ul className="tasks">
-          {tasks.map((task, index) => (
-            <div className="taskContainer" key={task}>
-              <li className="task">{task}</li>
-              <div>
-                <i
-                  class="fa fa-pencil"
-                  aria-hidden="true"
-                  onClick={() => {
-                    this.handleClickEdit(task, index);
-                  }}
-                ></i>
-                <i
-                  class="fa fa-times"
-                  aria-hidden="true"
-                  onClick={() => {
-                    this.handleClickDelete(index);
-                  }}
-                ></i>
-              </div>
-            </div>
-          ))}
-        </ul>
+        <Form
+          handleFormSubmit={this.handleFormSubmit}
+          handleInputChange={this.handleInputChange}
+          inputValue={inputValue}
+        />
+        <Tasks
+          tasks={tasks}
+          handleClickEdit={this.handleClickEdit}
+          handleClickDelete={this.handleDelete}
+        />
       </>
     );
   }
 }
 
-export default Form;
+export default Main;

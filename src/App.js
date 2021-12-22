@@ -1,7 +1,6 @@
 import React from 'react';
 import './style.css';
-import Form from './components/Form/';
-import Task from './components/Task/';
+import Main from './components/Main';
 
 export default function App() {
   return (
@@ -9,12 +8,8 @@ export default function App() {
       <label htmlFor="addTasks ">
         <h1>Lista de tarefas</h1>
       </label>
-      <Form />
-      <ul className="tasks">
-        {tasks.map((task, index) => (
-          <Task />
-        ))}
-      </ul>
+
+      <Main />
     </div>
   );
 }
