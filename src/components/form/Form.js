@@ -12,11 +12,19 @@ class Form extends Component {
   handleInputChange = (e) => {
     this.setState({ inputValue: e.target.value });
   };
+
+  handleFormSubmit = (e) => {
+    e.preventDefault();
+    const { inputValue, tasks } = this.state;
+    tasks.push(inputValue);
+    this.setState({ tasks });
+  };
+
   render() {
     const { inputValue, tasks } = this.state;
     return (
       <>
-        <form action="#">
+        <form action="#" onSubmit={this.handleFormSubmit}>
           <input
             onChange={this.handleInputChange}
             type="text"
@@ -29,8 +37,8 @@ class Form extends Component {
           </button>
         </form>
         <ul className="tasks">
-          {tasks.map((task) => (
-            <Task key={task} task={task} />
+          {tasks.map((task, index) => (
+            <Task key={task + ' ' + index} task={task} />
           ))}
         </ul>
       </>
