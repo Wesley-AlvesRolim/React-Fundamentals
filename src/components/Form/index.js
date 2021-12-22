@@ -9,7 +9,7 @@ function Form({ handleFormSubmit, handleInputChange, inputValue }) {
         onChange={handleInputChange}
         type="text"
         placeholder="Adicione aqui uma tafera"
-        id="addTasks "
+        id="addTasks"
         value={inputValue}
       />
       <button type="submit">
@@ -24,4 +24,5 @@ Form.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   inputValue: PropTypes.string.isRequired,
 };
+
 export default Form;

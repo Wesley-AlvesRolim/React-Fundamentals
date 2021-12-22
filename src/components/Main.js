@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Form from './components/Form';
-import Tasks from './components/Tasks';
+import Form from './Form';
+import Tasks from './Tasks';
 
 class Main extends Component {
   state = {
