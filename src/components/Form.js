@@ -4,9 +4,22 @@ import './form.css';
 class Form extends Component {
   state = {
     inputValue: '',
-    tasks: ['Café', 'Água todos os dias que é bom', 'Estudar'],
+    tasks: [],
     index: -1,
   };
+
+  componentDidMount() {
+    const { tasks } = this.state;
+    if (!tasks) return;
+    this.setState({ tasks: JSON.parse(localStorage.getItem('tasks')) });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { inputValue, tasks } = this.state;
+    if (prevState.inputValue === inputValue) return;
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
 
   handleInputChange = (e) => {
     this.setState({ inputValue: e.target.value });
@@ -20,6 +33,7 @@ class Form extends Component {
     const { tasks } = this.state;
     tasks.splice(index, 1);
     this.setState({ tasks });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
   };
 
   handleFormSubmit = (e) => {
@@ -54,7 +68,7 @@ class Form extends Component {
         </form>
         <ul className="tasks">
           {tasks.map((task, index) => (
-            <div className="taskContainer">
+            <div className="taskContainer" key={task}>
               <li className="task">{task}</li>
               <div>
                 <i
