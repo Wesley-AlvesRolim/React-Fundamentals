@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Form from './Form';
-import Tasks from './Tasks';
+import Form from "./Form";
+import Tasks from "./Tasks";
 
 class Main extends Component {
   state = {
-    inputValue: '',
+    inputValue: "",
     tasks: [],
     index: -1,
   };
 
   setLocalStorage(value) {
-    localStorage.setItem('tasks', JSON.stringify(value));
+    localStorage.setItem("tasks", JSON.stringify(value));
   }
   componentDidMount() {
     const { tasks } = this.state;
     if (!tasks) return;
-    this.setState({ tasks: JSON.parse(localStorage.getItem('tasks')) || [] });
+    this.setState({ tasks: JSON.parse(localStorage.getItem("tasks")) || [] });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -53,14 +53,14 @@ class Main extends Component {
     const { inputValue, index, tasks } = this.state;
 
     const checkIfHaveEqualsTexts = tasks.find((el) => el.text === inputValue);
-    if (checkIfHaveEqualsTexts || inputValue === '') return;
+    if (checkIfHaveEqualsTexts || inputValue === "") return;
     if (index !== -1) {
       tasks[index].text = inputValue;
-      this.setState({ tasks, inputValue: '', index: -1 });
+      this.setState({ tasks, inputValue: "", index: -1 });
       return;
     }
     tasks.push({ text: inputValue, isDone: false });
-    this.setState({ tasks, inputValue: '' });
+    this.setState({ tasks, inputValue: "" });
   };
 
   render() {

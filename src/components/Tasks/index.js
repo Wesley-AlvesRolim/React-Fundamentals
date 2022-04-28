@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './tasks.css';
+import React from "react";
+import PropTypes from "prop-types";
+import "./tasks.css";
 
 function Tasks({ tasks, handleClickDone, handleClickEdit, handleClickDelete }) {
   return (
     <ul className="tasks">
       {tasks.map(({ text, isDone }, index) => (
         <div className="taskContainer" key={text}>
-          <li className={`task ${isDone ? 'finished' : 'pending'}`}>{text}</li>
+          <li className={`task ${isDone ? "finished" : "pending"}`}>{text}</li>
           <div>
             <i
               class="fa fa-check"

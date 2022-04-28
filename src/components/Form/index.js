@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './form.css';
+import React from "react";
+import PropTypes from "prop-types";
+import "./form.css";
 
 function Form({ handleFormSubmit, handleInputChange, inputValue }) {
   return (
